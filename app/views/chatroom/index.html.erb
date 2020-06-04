@@ -8,21 +8,22 @@
     <div class="ui fluid raised card chatbox">
       <div class="content">
         <div class="ui feed">
-            <%= render @chat %>
+            <%= render @chats %>
         </div>
       </div>
       <div class="extra content">
-        <form class="ui reply form">
-        <div class="field">
-          <div class="ui fluid icon input">
-            <input type="text" placeholder="Enter a message here">
-            <i class="bordered inverted edit icon"></i>
+        <%= form_for(@chat, html: {class: "ui reply form", role: "form"}, url: chat_path) do |f| %>
+          <div class="field">
+            <div class="ui fluid icon input">
+              <%= f.text_field :body %>
+              <%= f.button '<i class="bordered inverted orange edit icon"></i>'.html_safe %>
+            </div>
           </div>
-        </div>
-      </form>
+        <% end %>
       </div>
     </div>
   </div>
+
   <div class="four wide column">
     <div class="ui fluid raised card chatbox">
       <div class="content">

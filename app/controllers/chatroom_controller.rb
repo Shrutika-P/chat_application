@@ -2,8 +2,11 @@
 
 # controller
 class ChatroomController < ApplicationController
+  # restriction to see page only for logged in user
+  before_action :require_user
+
   def index
-    # puts 'you are on index page'
-    @chat = Chat.all
+    @chat = Chat.new
+    @chats = Chat.all
   end
 end

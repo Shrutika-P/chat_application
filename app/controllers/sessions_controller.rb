@@ -2,9 +2,9 @@
 
 # controller
 class SessionsController < ApplicationController
-  def new
-    puts 'you are on index page'
-  end
+  before_action :logged_in_rederect, only: %i[new create]
+
+  def new; end
 
   def create
     # byebug
@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
       flash[:success] = 'You have successfully logged in'
       redirect_to root_path
     else
-      flash.now[:error] = 'There is something wrong with provided info'
+      flash.now[:error] = 'Username or password is wrong'
       render 'new'
     end
   end
@@ -24,5 +24,14 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
     flash[:success] = 'You have successfully logged out'
     redirect_to login_path
+  end
+
+  private
+
+  def logged_in_rederect
+    if logged_in?
+      flash.now[:error] = 'You are already logged in'
+      redirect_to root_path
+    end
   end
 end

@@ -11,6 +11,7 @@ User.create(username: 'shrutika', password: 'shrutika')
 User.create(username: 'shraddha', password: 'shraddha')
 User.create(username: 'aniket', password: 'aniket')
 User.create(username: 'vaibhav', password: 'vaibhav')
+User.create(username: 'PORTAL.ONE', password: 'Password1!')
 
 Chat.create(body: 'This is a message', user_id: User.last)
 Chat.create(body: 'Message', user_id: User.last)
