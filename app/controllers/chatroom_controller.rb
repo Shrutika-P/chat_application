@@ -7,6 +7,7 @@ class ChatroomController < ApplicationController
 
   def index
     @chat = Chat.new
-    @chats = Chat.all
+    # @chats = Chat.all
+    @chats = Chat.custom_display
   end
 end
